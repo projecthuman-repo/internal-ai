@@ -1,0 +1,9 @@
+ llama-index
+ llama-parse
+ pinecone-client[grpc]==3.0.0
+ arxiv
+ setuptools
+ llama-index-llms-ollama
+ python-dotenv
+llama-index-vector-stores-pinecone
+llama-index-embeddings-huggingface
