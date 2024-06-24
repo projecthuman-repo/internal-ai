@@ -85,4 +85,5 @@ query_engine = RetrieverQueryEngine(retriever=retriever)
 llm_query = query_engine.query('What are the different clubs and also give their summary')
 
 print(llm_query.response)
+#testing
 
