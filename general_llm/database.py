@@ -1,4 +1,3 @@
-from llama_index.llms.ollama import Ollama
 from llama_parse import LlamaParse
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core.embeddings import resolve_embed_model
@@ -9,12 +8,8 @@ from llama_index.core.ingestion import IngestionPipeline
 from llama_index.core.node_parser import SemanticSplitterNodeParser
 from llama_index.core import VectorStoreIndex
 from llama_index.core.retrievers import VectorIndexRetriever
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import Settings
-from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.core.tools import QueryEngineTool, ToolMetadata
-from llama_index.core.agent import ReActAgent
 from langchain_community.chat_message_histories import ChatMessageHistory
 from dotenv import load_dotenv
 import os
@@ -75,15 +70,3 @@ pipeline = IngestionPipeline(
 # Now we run our pipeline
 pipeline.run(documents=documents)
 pinecone_index.describe_index_stats()
-
-# Instantiate VectorStoreIndex object from your vector_store object
-vector_index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
-retriever = VectorIndexRetriever(index=vector_index, similarity_top_k=5)
-query_engine = RetrieverQueryEngine(retriever=retriever)
-
-# Now you query:
-llm_query = query_engine.query('What are the different clubs and also give their summary')
-
-print(llm_query.response)
-#testing
-
